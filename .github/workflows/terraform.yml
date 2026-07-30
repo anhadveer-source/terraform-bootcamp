@@ -1,3 +1,4 @@
+
 name: Terraform CI
 
 on:
@@ -10,21 +11,14 @@ on:
 
 jobs:
   terraform:
-    name: Terraform Validation
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
-      - name: Verify Terraform Version
-        run: terraform version
-
-      - name: Terraform Format Check
-        run: terraform fmt -check
 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
@@ -33,6 +27,12 @@ jobs:
 
       - name: Setup Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Format Check
+        run: terraform fmt -check
 
       - name: Terraform Init
         run: terraform init
