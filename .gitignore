@@ -10,4 +10,4 @@ github-key.json
 .DS_Store
 
 # VS Code
-.vscode/
+.vscode/github-key.json
