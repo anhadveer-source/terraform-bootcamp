@@ -7,6 +7,7 @@ terraform {
   }
 }
 # Terraform Bootcamp lets test this pipeline
+# testing firewall 
 provider "google" {
   project = "pdmsec-demo-prj-001"
   region  = "us-central1"
