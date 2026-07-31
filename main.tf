@@ -23,9 +23,9 @@ module "storage_bucket" {
 module "network" {
   source = "./modules/network"
 
-  network_name  = "bootcamp-vpc"
+  vpc_name      = "bootcamp-vpc"
   subnet_name   = "bootcamp-subnet"
-  cidr_range    = "10.10.0.0/24"
-  region        = "us-central1"
+  cidr_range    = "10.0.0.0/24"
+  region         = "us-central1"
   firewall_name = "allow-http"
 }
