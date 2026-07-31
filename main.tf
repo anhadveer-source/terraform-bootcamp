@@ -12,8 +12,19 @@ provider "google" {
   region  = "us-central1"
 }
 
-resource "google_storage_bucket" "demo_bucket" {
-  name                        = "anhad-tf-demo-20260730-001"
-  location                    = "US"
-  uniform_bucket_level_access = true
+module "storage_bucket" {
+  source = "./modules/storage_bucket"
+
+  bucket_name = "anhad-tf-demo-20260730-001"
+  location    = "US"
+}
+
+module "network" {
+  source = "./modules/network"
+
+  network_name  = "bootcamp-vpc"
+  subnet_name   = "bootcamp-subnet"
+  cidr_range    = "10.10.0.0/24"
+  region        = "us-central1"
+  firewall_name = "allow-http"
 }
